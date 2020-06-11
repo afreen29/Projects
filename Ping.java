@@ -36,7 +36,7 @@ public class server
             System.out.print("\n" + "------------------------------------------------------------------------------------------------------------------------ " + "\n");
 
             while (true)
-	          {
+	    {
 
                   // A datagram packet created to hold incoming UDP packet
                   DatagramPacket request = new DatagramPacket(new byte[1024], 1024);
@@ -70,10 +70,8 @@ public class server
                   packet_received+=1;
                   System.out.println("No. of packets lost= " + packet_lost + "\n" + "No. of packets received= " + packet_received + "\n");
                   System.out.print("\n" + "------------------------------------------------------------------------------------------------------------------------ " + "\n");
-
-	          }
-
 	    }
+      }
 
       // Print ping data to the standard output stream
       private static void printData(DatagramPacket request) throws Exception
@@ -122,11 +120,10 @@ import java.util.*;
 // Server has to process ping requests over UDP
 public class client
 {
+	private static final boolean False = false;
 
-	    private static final boolean False = false;
-
-	    public static void main(String[] args) throws Exception
-	    {
+	public static void main(String[] args) throws Exception
+	{
              // If arguments are not entered print message
              if (args.length != 2)
              {
@@ -134,24 +131,24 @@ public class client
                     return;
              }
 
-	          // Host to access
-	          String ServerName = args[0];
+	     // Host to access
+	     String ServerName = args[0];
 
-            // Port number to access
-            int port = Integer.parseInt(args[1]);
+              // Port number to access
+              int port = Integer.parseInt(args[1]);
 
-            // A datagram socket created for receiving and sending UDP packets through the specified port
-            DatagramSocket socket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName(ServerName);
-            boolean val = IPAddress.isReachable(1000);
-            if (val==False)
-            {
-                    System.out.println("Host Unreachable");
-                    return;
-            }
-            // Loop has to send 10 ping requests to the server
-            for(int i=1;i<11;i++)
-            {
+              // A datagram socket created for receiving and sending UDP packets through the specified port
+              DatagramSocket socket = new DatagramSocket();
+              InetAddress IPAddress = InetAddress.getByName(ServerName);
+              boolean val = IPAddress.isReachable(1000);
+              if (val==False)
+              {
+                      System.out.println("Host Unreachable");
+                      return;
+              }
+              // Loop has to send 10 ping requests to the server
+              for(int i=1;i<11;i++)
+              {
                     // A datagram packet to hold the outgoing UDP packet
                     // Each message contains the word Ping, the packet sequence and a timestamp in Unix time
                     System.out.println("");
@@ -187,10 +184,10 @@ public class client
                            System.out.println("   Reply not received from server");
                            System.out.print("\n" + "------------------------------------------------------------------------------------------------------------------------ " + "\n");
                      }   
-	                   System.out.println("");
-	                   Thread.sleep(1000);
-             }
-      }
+	             System.out.println("");
+	             Thread.sleep(1000);
+              }
+       }
 
 }
 
